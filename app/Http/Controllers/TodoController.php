@@ -22,6 +22,20 @@ class TodoController extends Controller
         return $todo;
     }
 
+    public function pending(Todo $todo)
+    {
+        $todo->status = TODO::STATUS_PENDING;
+        $todo->update();
+        return $todo;
+    }
+
+    public function complete(Todo $todo)
+    {
+        $todo->status = TODO::STATUS_COMPLETE;
+        $todo->update();
+        return $todo;
+    }
+
     public function delete(Todo $todo)
     {
         $todo->delete();
