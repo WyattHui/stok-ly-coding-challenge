@@ -3,8 +3,16 @@
 ### Development
 * Install back-end
 
+    * Copy `.env.example` to `.env`
+
     ```
     composer install
+    ```
+
+* Migrate database
+
+    ```
+    php artisan migrate
     ```
 
 * Install and start front-end
