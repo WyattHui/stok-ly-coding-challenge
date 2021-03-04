@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 
@@ -42,9 +43,20 @@ class TodoController extends Controller
         return $todo;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return Todo::get();
+        $request->validate([
+            'orderBy' => [
+                'nullable',
+                Rule::in(['id', 'description']),
+            ],
+        ]);
+
+        $builder = Todo::select();
+        if ($request->has('orderBy')) {
+            $builder->orderBy($request->get('orderBy'), 'desc');
+        }
+        return $builder->get();
     }
 
     public function get(Todo $todo)
