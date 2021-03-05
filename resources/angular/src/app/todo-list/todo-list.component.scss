@@ -1,0 +1,36 @@
+.header {
+  text-align: center;
+}
+
+.item {
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 0 8px 16px;
+  background-color: #fafafa;
+  outline: none;
+}
+
+.button {
+  transition: all 0.2s ease-in-out;
+}
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.description {
+  width: 250px;
+}
+
+.todo-item {
+  display: flex;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.toggle-todo-status {
+  transform: scale(1.5);
+}

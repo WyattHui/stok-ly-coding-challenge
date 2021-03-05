@@ -1,0 +1,21 @@
+<div>
+  <h1>Todos</h1>
+  <form [formGroup]="addTodoForm" (ngSubmit)="postTodo()">
+    <input class="item description"
+      type="text" formControlName="description"
+      placeholder="What needs to be done?" autofocus="">
+    <button class="item button" type="submit">Add</button>
+  </form>
+</div>
+<div *ngIf="todos.length > 0">
+  <div *ngFor="let todo of todos" class="todo-item" >
+    <input class="item description"
+      [class.line-through]="todo.status"
+      type="text"
+      value="{{todo.description}}"
+      (keyup)="putTodo($event, todo)">
+      <input class="item toggle-todo-status" type="checkbox" [checked]="todo.status"
+        (click)="toggleTodoStatus(todo)">
+      <button class="item button" (click)="deleteTodo(todo)">Delete</button>
+  </div>
+</div>
